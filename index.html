@@ -1,3 +1,64 @@
-Hello World
-<br>
-I am anon
+<!DOCTYPE html>
+<html lang="en-US">
+	<head>
+		<title>Hello World</title>
+		<style>
+			button {
+				padding: 10px;
+				background-color: green;
+				color: white;
+				border: solid 2px blue;
+				margin: 10px;
+			}
+		</style>
+		<script>
+			var magicNo = 0;
+			var tries = 0;
+			function generateMagicNo()
+			{
+				if (magicNo == 0) {
+					magicNo = Math.floor(Math.random()*100)+1;
+					console.log(magicNo);
+				}
+
+			}
+			function reGenerateMagicNo()
+			{
+				magicNo = 0;
+				tries = 0;
+				generateMagicNo();
+			}
+			function guessMagicNo()
+			{
+				var guess = document.getElementById("guessInput").value;
+				console.log(guess);
+				tries += 1;
+				console.log(tries);
+				if (guess == magicNo) {
+					document.getElementById("results").innerHTML = "You guessed right!!! It took you " + tries + " tries";
+				}
+				else {
+					if (guess < magicNo) {
+						console.log("guess is less");
+						document.getElementById("results").innerHTML = "Sorry, that's not it... You have tried " + tries + " times, maybe try guessing higher...";
+					}
+					else {
+						console.log("guess is more");
+						document.getElementById("results").innerHTML = "Sorry, that's not it... You have tried " + tries + " times, maybe try guessing lower...";
+					}
+
+				}
+			}
+
+		</script>
+	</head>
+	<body style="background-color:powderblue;">	
+		<H1 onload="reGenerateMagicNo()">Let's play!!! Click the button below to generate a new magic number</H1>
+		<button onclick="reGenerateMagicNo()">Generate Magic Number</button>
+		<br>
+		<span>My guess is:</span><input id="guessInput" type="number"> <button onclick="guessMagicNo()">Did I guess it?</button>
+		<p id="results"></p>
+
+	</body>
+</html>
+
