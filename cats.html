@@ -2,23 +2,40 @@
 <html>
 	<head>
 		<title>CATS</title>
+		<style>
+			#movingimg {
+				height: 100px;
+				width: 100px;
+				background-color: black;
+			}
+			body {
+				background-color: pink;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<img id="movingimg" src="https://media.giphy.com/media/rdma0nDFZMR32/giphy.gif" alt="happy piggy" title="happy piggy"/>
 		<script>
 			var moveImg = document.getElementById("movingimg");
 			moveImg.style.position = "absolute";
-			moveImg.style.left = 0;
-			var imgpos = 0, maxpos = 300;
-			function moveImg() {
-				if (imgpos < maxpos) {
-					imgpos += 10;
-					moveImg.style.left = imgpos;
-					setTimeout(moveImg, 1000);
+			moveImg.style.left = "0px";
+			var imgpos = 0;
+			var maxpos = 300;
+			function move() {
+				if (imgpos < window.innerWidth) {
+					imgpos += 5;
+					
+					
+				} else {
+					imgpos = -10;
+					moveImg.style.top = ""+(Math.floor(Math.random()*window.innerHeight)+1)+"px";
 				}
+				moveImg.style.left = ""+imgpos+"px";
+				setTimeout(move, 50);
 			}
-			moveImg();
-		</script>>
-	</head>
-	<body>
-		<img id="movingimg" src="https://media.giphy.com/media/rdma0nDFZMR32/giphy.gif" alt="happy piggy"/>
+			move();
+		</script>
 	</body>
 </html>
 
