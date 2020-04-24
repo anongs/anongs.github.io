@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>CATS</title>
+		<script>
+			var moveImg = document.getElementById("movingimg");
+			moveImg.style.position = "absolute";
+			moveImg.style.left = 0;
+			var imgpos = 0, maxpos = 300;
+			function moveImg() {
+				if (imgpos < maxpos) {
+					imgpos += 10;
+					moveImg.style.left = imgpos;
+					setTimeout(moveImg, 1000);
+				}
+			}
+			moveImg();
+		</script>>
+	</head>
+	<body>
+		<img id="movingimg" src="https://media.giphy.com/media/rdma0nDFZMR32/giphy.gif" alt="happy piggy"/>
+	</body>
+</html>
+
